@@ -111,11 +111,11 @@ Arabic or Hebrew.
 
 ## 3. Which mark means what
 
-Do not decide this per screen. `@octomate/payroll-icons/concepts` holds the
+Do not decide this per screen. `hr-icons/concepts` holds the
 agreed answer, and the build enforces that one idea maps to one mark:
 
 ```ts
-import { iconFor } from "@octomate/payroll-icons/concepts";
+import { iconFor } from "hr-icons/concepts";
 
 iconFor("job order");   // "job-order"
 iconFor("requisition"); // "job-order"  — same idea, same mark
@@ -142,7 +142,7 @@ borrows the nearest mark rather than owning one, and `npm run icons` prints the
 count on every build, so the backlog cannot quietly grow:
 
 ```ts
-import { approximated } from "@octomate/payroll-icons/concepts";
+import { approximated } from "hr-icons/concepts";
 ```
 
 Today that is 7, and every one that is left is a near neighbour rather than a
@@ -220,7 +220,7 @@ more than a description.
   is drawn against them
 - changing the component props
 
-**Already burned:** `@octomate/payroll-icons@0.1.0` is published under MIT and
+**Already burned:** `hr-icons@0.1.0` is published under MIT and
 cannot be withdrawn. Anything shipped is shipped.
 
 ---

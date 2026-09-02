@@ -8,11 +8,11 @@ import { type IconDefinition, type OpticalSize, resolveMasters } from "../types.
  * uses, so a template only pulls in the marks it names and the rest tree-shake
  * away. A name-keyed registry would import all 54.
  *
- *   import { Payslip, Deduction } from "@octomate/payroll-icons/angular";
+ *   import { Payslip, Deduction } from "hr-icons/angular";
  *
- *   <pi-icon [icon]="Payslip" />
- *   <pi-icon [icon]="Deduction" [size]="16" />
- *   <pi-icon [icon]="Payslip" variant="filled" ariaLabel="Payslip" />
+ *   <hr-icon [icon]="Payslip" />
+ *   <hr-icon [icon]="Deduction" [size]="16" />
+ *   <hr-icon [icon]="Payslip" variant="filled" ariaLabel="Payslip" />
  *
  * Colour comes from `currentColor`, so the icon takes the colour of whatever it
  * sits in — style the host, not the icon.
@@ -20,7 +20,7 @@ import { type IconDefinition, type OpticalSize, resolveMasters } from "../types.
 let nextMaskId = 0;
 
 @Component({
-  selector: "pi-icon",
+  selector: "hr-icon",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -110,7 +110,7 @@ let nextMaskId = 0;
     `,
   ],
 })
-export class PayrollIconComponent {
+export class HrIconComponent {
   /** The icon to draw. Import it by name from the package. */
   readonly icon = input.required<IconDefinition>();
   /** Rendered width and height in px. */

@@ -1,4 +1,4 @@
-# Payroll Icon System
+# HR Icon System
 
 **64 icons** for payroll, time and attendance, statutory contributions, staffing,
 billing and payments — each in two optical sizes and two weights.
@@ -14,15 +14,15 @@ badge vocabulary instead of drawing a new mark for every combination.
 - **Animation-ready** — every path carries `pathLength="1"`, so one CSS rule times the whole library
 - **Tree-shakeable** — one icon is ~1.3 kB gzipped, three are ~1.5 kB; the set never ships whole
 
-**[Browse every icon →](https://andyliu0427.github.io/payroll-icons/)** — search in English or
+**[Browse every icon →](https://andyliu0427.github.io/hr-icons/)** — search in English or
 Chinese, switch size and weight, click to copy the import.
 
 ```bash
-npm install @octomate/payroll-icons
+npm install hr-icons
 ```
 
 ```tsx
-import { Payslip, Deduction, InvoiceException } from "@octomate/payroll-icons";
+import { Payslip, Deduction, InvoiceException } from "hr-icons";
 
 <Payslip />
 <Deduction size={20} />
@@ -148,7 +148,7 @@ from SGD from AUD and an icon that claims to would be lying:
 code to its mark and let the product label carry the code itself:
 
 ```ts
-import { currencies } from "@octomate/payroll-icons/registry";
+import { currencies } from "hr-icons/registry";
 
 const markFor = (code: string) =>
   currencies.find((c) => c.covers?.includes(code))?.Component;
@@ -244,7 +244,7 @@ deciding.
 Optional, opt-in, one import:
 
 ```tsx
-import "@octomate/payroll-icons/animate.css";
+import "hr-icons/animate.css";
 
 <Payslip className="pi-draw" />
 ```
@@ -266,16 +266,16 @@ library without per-icon tuning. Tunable per instance:
 ## Angular
 
 ```bash
-npm install @octomate/payroll-icons
+npm install hr-icons
 ```
 
 ```ts
-import { PayrollIconComponent, Payslip, Deduction } from "@octomate/payroll-icons/angular";
+import { HrIconComponent, Payslip, Deduction } from "hr-icons/angular";
 
-@Component({ imports: [PayrollIconComponent], template: `
-  <pi-icon [icon]="Payslip" />
-  <pi-icon [icon]="Deduction" [size]="16" />
-  <pi-icon [icon]="Payslip" variant="filled" ariaLabel="Payslip" />
+@Component({ imports: [HrIconComponent], template: `
+  <hr-icon [icon]="Payslip" />
+  <hr-icon [icon]="Deduction" [size]="16" />
+  <hr-icon [icon]="Payslip" variant="filled" ariaLabel="Payslip" />
 ` })
 class Example {
   protected readonly Payslip = Payslip;
@@ -308,10 +308,10 @@ The package is React-first but the geometry is not.
 
 ```ts
 // raw path data
-import { coinPaths, coinPaths16, downModifierPaths } from "@octomate/payroll-icons/paths";
+import { coinPaths, coinPaths16, downModifierPaths } from "hr-icons/paths";
 
 // render to a string — Angular, email, SSG
-import { toSvgString } from "@octomate/payroll-icons";
+import { toSvgString } from "hr-icons";
 toSvgString(
   { lg: { base: coinPaths, modifier: downModifierPaths } },
   { size: 20 },
@@ -319,7 +319,7 @@ toSvgString(
 ```
 
 Optimised `.svg` files ship for both optical sizes, at
-`@octomate/payroll-icons/svg/deduction.svg` and `…/svg/deduction-16.svg`.
+`hr-icons/svg/deduction.svg` and `…/svg/deduction-16.svg`.
 
 Adding a Vue, Svelte or Angular target is one emitter in
 [`scripts/build.mjs`](scripts/build.mjs) — the validation, optimisation and composition
@@ -332,7 +332,7 @@ clipboard, another with a briefcase, and both authors were being reasonable. The
 table makes that decision once.
 
 ```ts
-import { concepts, iconFor, approximated } from "@octomate/payroll-icons/concepts";
+import { concepts, iconFor, approximated } from "hr-icons/concepts";
 
 iconFor("job order");   // "job-order"
 iconFor("requisition"); // "job-order"  — same idea, same mark

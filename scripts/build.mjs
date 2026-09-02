@@ -661,7 +661,7 @@ export const groups = ${JSON.stringify([...new Set(icons.map((i) => i.group))])}
 /* the Angular entry point re-exports the component and every definition */
 writeFileSync(
   join(GEN, "angular.ts"),
-  `${HEADER}export { PayrollIconComponent } from "../angular/payroll-icon.js";
+  `${HEADER}export { HrIconComponent } from "../angular/hr-icon.js";
 export { GRID, OPTICAL_BREAKPOINT } from "../types.js";
 export type { IconDefinition, IconGeometry, IconMasters, OpticalSize } from "../types.js";
 

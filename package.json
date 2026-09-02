@@ -1,5 +1,5 @@
 {
-  "name": "@octomate/payroll-icons",
+  "name": "hr-icons",
   "version": "0.3.0",
   "description": "Payroll, time, statutory and billing icons built from a base × modifier system. 24×24, stroke, currentColor, animation-ready.",
   "keywords": [
@@ -16,12 +16,12 @@
   "author": "YingYen Liu",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndyLiu0427/payroll-icons.git"
+    "url": "git+https://github.com/AndyLiu0427/hr-icons.git"
   },
   "bugs": {
-    "url": "https://github.com/AndyLiu0427/payroll-icons/issues"
+    "url": "https://github.com/AndyLiu0427/hr-icons/issues"
   },
-  "homepage": "https://andyliu0427.github.io/payroll-icons/",
+  "homepage": "https://andyliu0427.github.io/hr-icons/",
   "type": "module",
   "sideEffects": [
     "**/*.css"

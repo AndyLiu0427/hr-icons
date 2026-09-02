@@ -10,6 +10,18 @@ release — the drawings are still settling. The component API will not.
 
 ## [Unreleased]
 
+### Changed
+
+- **Renamed to `hr-icons`.** The set was never payroll-only — it covers time and
+  attendance, staffing, statutory schemes across three jurisdictions and
+  billing. It also no longer publishes under the `@octomate` scope; this is a
+  personal project.
+
+  `@octomate/payroll-icons` is deprecated and points here. Its published
+  versions keep working: nothing is unpublished, and the marks are identical.
+  The Angular component follows the name — `PayrollIconComponent` is now
+  `HrIconComponent` and its selector `pi-icon` is now `hr-icon`.
+
 ## [0.3.0] — 2026-08-21
 
 ### Added
@@ -95,8 +107,8 @@ release — the drawings are still settling. The component API will not.
   `client` is marked `composable: false`: its lower wing occupies the modifier
   zone, so badging it destroys the mark. `assignment` composes cleanly.
 
-- **An Angular entry point.** `@octomate/payroll-icons/angular` exports a
-  `PayrollIconComponent` and every icon as an `IconDefinition`. The geometry
+- **An Angular entry point.** `hr-icons/angular` exports a
+  `HrIconComponent` and every icon as an `IconDefinition`. The geometry
   moved into a framework-free core that both runtimes consume, so a mark cannot
   drift between React and Angular.
 
@@ -111,7 +123,7 @@ release — the drawings are still settling. The component API will not.
   4.25-unit modifier disc cannot clear more than about 0.45, so anything tighter
   is a slip rather than a constraint the grid imposed.
 
-- **A concept table**, at `@octomate/payroll-icons/concepts`. 66 ideas, each
+- **A concept table**, at `hr-icons/concepts`. 66 ideas, each
   pinned to exactly one mark, so two screens showing the same thing cannot show
   it differently. `iconFor(term)` resolves a concept name, its Chinese label or
   any synonym, ignoring case and separators — `"job order"`, `"job-order"`,

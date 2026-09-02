@@ -1,6 +1,6 @@
 /*
  * Optional animation layer. Import it only if you want motion:
- *   import "@octomate/payroll-icons/animate.css";
+ *   import "hr-icons/animate.css";
  *
  * Every path carries pathLength="1", so a dash offset of 1 is exactly one full
  * path no matter how long the real geometry is. That is what lets a single rule

@@ -50,7 +50,7 @@ const STROKES = ["auto", 1.25, 1.5, 2] as const;
 
 function importLine(icon: IconMeta) {
   const pascal = icon.name.replace(/(^|-)(\w)/g, (_, __, c: string) => c.toUpperCase());
-  return `import { ${pascal} } from "@octomate/payroll-icons";`;
+  return `import { ${pascal} } from "hr-icons";`;
 }
 
 export default function App() {

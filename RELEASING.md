@@ -53,8 +53,8 @@ Nothing is published when this happens, so the version number is not burned.
 Fix the token, update the secret, and re-run the failed job:
 
 ```bash
-gh secret set NPM_TOKEN --repo AndyLiu0427/payroll-icons
-gh run rerun <run-id> --failed --repo AndyLiu0427/payroll-icons
+gh secret set NPM_TOKEN --repo AndyLiu0427/hr-icons
+gh run rerun <run-id> --failed --repo AndyLiu0427/hr-icons
 ```
 
 `gh run rerun` may print "cannot be rerun" and re-run it anyway. Check the run,
@@ -72,7 +72,7 @@ page is the only authority.
    on the real publish.
 
    ```bash
-   gh workflow run publish.yml --repo AndyLiu0427/payroll-icons
+   gh workflow run publish.yml --repo AndyLiu0427/hr-icons
    gh run watch
    ```
 
@@ -91,7 +91,7 @@ page is the only authority.
 
    ```bash
    gh release create v0.1.0 \
-     --repo AndyLiu0427/payroll-icons \
+     --repo AndyLiu0427/hr-icons \
      --title "v0.1.0" \
      --notes-file CHANGELOG.md
    ```
@@ -99,8 +99,8 @@ page is the only authority.
 5. **Verify what landed.**
 
    ```bash
-   npm view @octomate/payroll-icons version
-   npm view @octomate/payroll-icons dist-tags
+   npm view hr-icons version
+   npm view hr-icons dist-tags
    ```
 
 ## Keeping the toolchain current
@@ -153,11 +153,11 @@ composition that breaks one fails the release rather than shipping.
 
 ## If a release goes wrong
 
-Within 72 hours, `npm unpublish @octomate/payroll-icons@<version>` removes it.
+Within 72 hours, `npm unpublish hr-icons@<version>` removes it.
 The version number stays burned — publish a patch, do not reuse it.
 
 After 72 hours, deprecate instead:
 
 ```bash
-npm deprecate @octomate/payroll-icons@<version> "Broken build, use <newer>"
+npm deprecate hr-icons@<version> "Broken build, use <newer>"
 ```
