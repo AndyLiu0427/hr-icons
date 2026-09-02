@@ -45,8 +45,3 @@ jobs:
       # permissive bundler does. Two release blockers got past everything else.
       - name: Smoke test the built package
         run: npm run smoke
-
-      # The curated subset must keep building — it is easy to break by adding a
-      # composition that depends on something outside core.
-      - name: Build the core subset
-        run: npm run build:core

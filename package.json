@@ -1,7 +1,7 @@
 {
   "name": "hr-icons",
   "version": "0.3.0",
-  "description": "Payroll, time, statutory and billing icons built from a base × modifier system. 24×24, stroke, currentColor, animation-ready.",
+  "description": "Payroll, time, statutory and billing icons built from a base \u00d7 modifier system. 24\u00d724, stroke, currentColor, animation-ready.",
   "keywords": [
     "icons",
     "svg",
@@ -63,7 +63,6 @@
   },
   "scripts": {
     "icons": "node scripts/build.mjs",
-    "icons:core": "node scripts/build.mjs --set core",
     "figma": "npm run icons && node scripts/figma-export.mjs",
     "confusability": "node scripts/confusability.mjs",
     "shapes": "node scripts/shapes.mjs",
@@ -73,7 +72,6 @@
     "smoke": "node scripts/smoke.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:core": "npm run icons:core && ngc -p tsconfig.build.json && cp src/animate.css dist/animate.css",
     "dev": "npm run icons && vite --config vite.config.demo.ts",
     "demo:build": "npm run icons && vite build --config vite.config.demo.ts",
     "typecheck": "tsc --noEmit",

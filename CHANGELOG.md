@@ -48,6 +48,14 @@ release — the drawings are still settling. The component API will not.
   The Angular component follows the name — `PayrollIconComponent` is now
   `HrIconComponent` and its selector `pi-icon` is now `hr-icon`.
 
+### Removed
+
+- **The `core` / `extended` set.** Every icon is available and always was —
+  the split was a curated starting list, and it kept costing a filter in the
+  build, a toggle in the docs, a column in the snapshot and a paragraph in the
+  README for a distinction no consumer needed to make. Gone: `set` from the
+  manifest and `IconMeta`, `--set core` / `npm run icons:core` /
+  `npm run build:core`, the docs-site toggle, the CI subset build.
 
 ## [0.3.0] — 2026-08-21
 

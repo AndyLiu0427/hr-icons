@@ -439,7 +439,6 @@ only thing that catches a corner landing at 2.0 because that is what the editor 
 | Command | Does |
 | --- | --- |
 | `npm run icons` | Validate masters and generate components, data and SVGs |
-| `npm run icons:core` | Same, curated core subset only |
 | `npm run figma` | Generate, then emit the Figma import bundle |
 | `npm run confusability` | Measure how alike any two marks look at 16px¹ |
 | `npm run shapes` | Audit recurring shapes against the canon |
@@ -454,26 +453,6 @@ only thing that catches a corner landing at 2.0 because that is what the editor 
 not a dependency. Install it when you want to run the check:
 `npm i -D playwright && npx playwright install chromium`.
 
-## Core and extended
-
-Everything in this package ships, under one MIT licence. There is no paid tier
-and no gated subset — an earlier plan for one was dropped because it would not
-have held: the bases, the modifiers and the composition rules are all published
-here, so anyone can compose the rest in a few minutes.
-
-`set` in the manifest curates rather than gates:
-
-- **core** (37) — the marks nearly every payroll product needs: all 26 bases,
-  plus the states that come up immediately.
-- **extended** (28) — the long tail. Currency coins, and the composed states a
-  product reaches for once the basics are in place.
-
-`npm run icons:core` builds the subset. It is an adoption aid, not a boundary —
-useful when introducing the set to a team and you want a short list to start
-from. For bundle size it does nothing: tree-shaking already drops what an app
-does not import.
-
-The docs site has the same filter.
 
 ## Commercial use
 

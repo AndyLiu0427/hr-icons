@@ -32,21 +32,18 @@ const has = (dir, name) => existsSync(join(ICONS, dir, `${name}.svg`));
 const icons = [
   ...Object.entries(manifest.bases).map(([name, m]) => ({
     name,
-    set: m.set,
     sm: has("bases-16", name),
     derived: m.fill != null,
     drawn: has("bases-filled", name),
   })),
   ...manifest.compositions.map((c) => ({
     name: c.name,
-    set: c.set,
     sm: has("bases-16", c.base) && has("modifiers-16", c.modifier),
     derived: manifest.bases[c.base]?.fill != null,
     drawn: has("bases-filled", c.base),
   })),
-  ...Object.entries(manifest.currencies).map(([name, m]) => ({
+  ...Object.entries(manifest.currencies).map(([name]) => ({
     name: `coin-${name}`,
-    set: m.set,
     sm: has("currency-16", name),
     derived: true, // a ring with its glyph inside is exactly what the derivation wants
     drawn: false,
@@ -79,18 +76,6 @@ const WORDS = [
  */
 const checks = [
   ["README.md", "icon total", /^\*\*(\d+) icons\*\*/m, String(icons.length)],
-  [
-    "README.md",
-    "core count",
-    /- \*\*core\*\* \((\d+)\)/,
-    String(icons.filter((i) => i.set === "core").length),
-  ],
-  [
-    "README.md",
-    "bases in the core line",
-    /the marks nearly every payroll product needs: all (\d+) bases/,
-    String(Object.keys(manifest.bases).length),
-  ],
   [
     "README.md",
     "bases that refuse a badge",

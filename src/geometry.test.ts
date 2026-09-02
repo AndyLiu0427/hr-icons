@@ -32,7 +32,7 @@ describe("geometry snapshot", () => {
   it("pins the icon list and how each is composed", () => {
     expect(
       registry.map((i) =>
-        [i.name, i.set, i.base ?? "-", i.modifier ?? "-", i.hasSmallMaster, i.hasFilled].join(" "),
+        [i.name, i.base ?? "-", i.modifier ?? "-", i.hasSmallMaster, i.hasFilled].join(" "),
       ),
     ).toMatchSnapshot();
   });
@@ -112,12 +112,6 @@ describe("system rules", () => {
 describe("what ships", () => {
   it("exports one component per registry entry", () => {
     for (const icon of registry) expect(typeof icon.Component).toBe("object");
-  });
-
-  it("keeps the core subset a strict subset of the whole", () => {
-    const core = registry.filter((i) => i.set === "core");
-    expect(core.length).toBeGreaterThan(0);
-    expect(core.length).toBeLessThan(registry.length);
   });
 
   it("has no duplicate names", () => {

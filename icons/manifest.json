@@ -1,5 +1,4 @@
 {
-  "$comment_set": "`set` curates rather than gates. Everything ships, under one MIT licence — core is the 26 marks nearly every payroll product needs, extended is the long tail. It drives `npm run icons:core`, which is a curation aid, not a paywall.",
   "$comment": "Metadata for every authored master. Geometry lives in the .svg files; this file says what each mark means and how it may be used. The build reads this to decide what to generate.",
 
   "grid": {
@@ -16,56 +15,48 @@
       "zh": "薪資單",
       "group": "documents",
       "composable": true,
-      "set": "core",
       "fill": { "container": 0 }
     },
     "invoice": {
       "zh": "發票 / 請款單",
       "group": "documents",
       "composable": true,
-      "set": "core",
       "fill": { "container": 0 }
     },
     "contract": {
       "zh": "合約",
       "group": "documents",
       "composable": true,
-      "set": "core",
       "fill": { "container": 0 }
     },
     "tax-form": {
       "zh": "稅務表單 / 扣繳",
       "group": "documents",
       "composable": true,
-      "set": "core",
       "fill": { "container": 0 }
     },
     "statement": {
       "zh": "對帳單",
       "group": "documents",
       "composable": false,
-      "set": "core",
       "note": "full-width bar chart runs into the modifier zone",
       "fill": { "container": 0 }
     },
     "documents": {
       "zh": "多筆文件 / 批次",
       "group": "documents",
-      "composable": true,
-      "set": "core"
+      "composable": true
     },
     "receipt": {
       "zh": "收據",
       "group": "documents",
       "composable": true,
-      "set": "core",
       "fill": { "container": 0 }
     },
     "ledger": {
       "zh": "總帳 / 帳冊",
       "group": "documents",
       "composable": true,
-      "set": "core",
       "note": "no derivable filled form — the spine follows the container edge, so knocking it out bites the silhouette, and skipping it leaves a shape indistinguishable from a filled invoice"
     },
 
@@ -73,15 +64,13 @@
       "zh": "出勤工時",
       "group": "time",
       "composable": true,
-      "set": "core",
       "conflicts": ["pending"]
     },
-    "calendar": { "zh": "日曆 / 期間", "group": "time", "composable": true, "set": "core" },
+    "calendar": { "zh": "日曆 / 期間", "group": "time", "composable": true },
     "clock": {
       "zh": "工時 / 時數",
       "group": "time",
       "composable": true,
-      "set": "core",
       "conflicts": ["pending"],
       "fill": { "container": 0 }
     },
@@ -90,37 +79,32 @@
       "zh": "金額 / 幣值",
       "group": "money",
       "composable": true,
-      "set": "core",
       "fill": { "container": 0 }
     },
     "banknote": {
       "zh": "現金 / 鈔票",
       "group": "money",
       "composable": false,
-      "set": "core",
       "note": "wide and short — knockout eats a run of the bottom edge, not a corner",
       "fill": { "container": 0 }
     },
-    "bank": { "zh": "銀行 / 帳戶", "group": "money", "composable": true, "set": "core" },
+    "bank": { "zh": "銀行 / 帳戶", "group": "money", "composable": true },
     "exchange": {
       "zh": "匯率 / 多幣別",
       "group": "money",
       "composable": false,
-      "set": "core",
       "note": "arrows span the full width"
     },
     "margin": {
       "zh": "毛利 / 價差",
       "group": "money",
       "composable": false,
-      "set": "core",
       "note": "both rules run the full width — the knockout would eat a run of the lower one"
     },
     "balance": {
       "zh": "對帳 / 平衡",
       "group": "money",
       "composable": false,
-      "set": "core",
       "note": "right pan and base sit in the modifier zone"
     },
 
@@ -128,7 +112,6 @@
       "zh": "法定給付 / 保險",
       "group": "statutory",
       "composable": true,
-      "set": "core",
       "fill": { "container": 0 }
     },
 
@@ -136,7 +119,6 @@
       "zh": "法定合規",
       "group": "statutory",
       "composable": false,
-      "set": "core",
       "fill": { "container": 0 },
       "note": "the notched rim runs all the way round — the knockout would bite a run of it, not a corner"
     },
@@ -145,55 +127,50 @@
       "zh": "社會保險",
       "group": "statutory",
       "composable": false,
-      "set": "core",
       "fill": { "container": 0 },
       "note": "the figure's right shoulder sits in the modifier zone"
     },
 
-    "employee": { "zh": "員工", "group": "organisation", "composable": true, "set": "core" },
+    "employee": { "zh": "員工", "group": "organisation", "composable": true },
     "team": {
       "zh": "團隊 / 人數",
       "group": "organisation",
       "composable": false,
-      "set": "core",
       "note": "second figure occupies the modifier zone"
     },
     "org-chart": {
       "zh": "部門 / 成本中心",
       "group": "organisation",
       "composable": false,
-      "set": "core",
       "note": "right child node sits in the modifier zone"
     },
 
-    "pay-run": { "zh": "薪資批次", "group": "process", "composable": true, "set": "core" },
+    "pay-run": { "zh": "薪資批次", "group": "process", "composable": true },
 
     "client": {
       "zh": "客戶公司",
       "group": "staffing",
       "composable": false,
-      "set": "core",
       "note": "the lower wing sits in the modifier zone"
     },
     "assignment": {
       "zh": "派遣 / 指派",
       "group": "staffing",
-      "composable": true,
-      "set": "core"
+      "composable": true
     }
   },
 
   "modifiers": {
-    "approved": { "zh": "已核准 / 已付", "set": "core" },
-    "pending": { "zh": "待處理", "set": "core", "glyph": "clock" },
-    "recurring": { "zh": "週期性", "set": "core" },
-    "exception": { "zh": "異常 / 需查核", "set": "core" },
-    "locked": { "zh": "已關帳 / 鎖定", "set": "core" },
-    "down": { "zh": "扣除 / 支出", "set": "core" },
-    "up": { "zh": "加給 / 收入", "set": "core" },
-    "plus": { "zh": "新增 / 加項", "set": "core" },
-    "minus": { "zh": "移除 / 減項", "set": "core" },
-    "draft": { "zh": "草稿 / 未送出", "set": "core" }
+    "approved": { "zh": "已核准 / 已付" },
+    "pending": { "zh": "待處理", "glyph": "clock" },
+    "recurring": { "zh": "週期性" },
+    "exception": { "zh": "異常 / 需查核" },
+    "locked": { "zh": "已關帳 / 鎖定" },
+    "down": { "zh": "扣除 / 支出" },
+    "up": { "zh": "加給 / 收入" },
+    "plus": { "zh": "新增 / 加項" },
+    "minus": { "zh": "移除 / 減項" },
+    "draft": { "zh": "草稿 / 未送出" }
   },
 
   "$comment_currency": "Currency coins are named by symbol, not by ISO code: a dollar sign cannot distinguish USD from SGD from AUD, and an icon that claims to would be lying. `covers` records which currencies each mark legitimately stands for — use it to drive a picker, and let the product label carry the actual code. All of these are display-only: the glyph fills the coin, so there is no room for a badge, and you would badge the generic `coin` anyway.",
@@ -202,27 +179,24 @@
     "dollar": {
       "zh": "美元 / 新幣 / 澳幣",
       "symbol": "$",
-      "covers": ["USD", "SGD", "AUD", "HKD", "TWD", "NZD", "CAD"],
-      "set": "extended"
+      "covers": ["USD", "SGD", "AUD", "HKD", "TWD", "NZD", "CAD"]
     },
-    "euro": { "zh": "歐元", "symbol": "€", "covers": ["EUR"], "set": "extended" },
-    "pound": { "zh": "英鎊", "symbol": "£", "covers": ["GBP"], "set": "extended" },
-    "yen": { "zh": "日圓 / 人民幣", "symbol": "¥", "covers": ["JPY", "CNY"], "set": "extended" },
-    "peso": { "zh": "菲律賓披索", "symbol": "₱", "covers": ["PHP"], "set": "extended" },
-    "dong": { "zh": "越南盾", "symbol": "₫", "covers": ["VND"], "set": "extended" },
-    "baht": { "zh": "泰銖", "symbol": "฿", "covers": ["THB"], "set": "extended" },
+    "euro": { "zh": "歐元", "symbol": "€", "covers": ["EUR"] },
+    "pound": { "zh": "英鎊", "symbol": "£", "covers": ["GBP"] },
+    "yen": { "zh": "日圓 / 人民幣", "symbol": "¥", "covers": ["JPY", "CNY"] },
+    "peso": { "zh": "菲律賓披索", "symbol": "₱", "covers": ["PHP"] },
+    "dong": { "zh": "越南盾", "symbol": "₫", "covers": ["VND"] },
+    "baht": { "zh": "泰銖", "symbol": "฿", "covers": ["THB"] },
     "ringgit": {
       "zh": "馬幣",
       "symbol": "RM",
       "covers": ["MYR"],
-      "set": "extended",
       "note": "two letters — no 16px master, falls back to the 24px one"
     },
     "rupiah": {
       "zh": "印尼盾",
       "symbol": "Rp",
       "covers": ["IDR"],
-      "set": "extended",
       "note": "two letters — no 16px master, falls back to the 24px one"
     }
   },
@@ -232,178 +206,154 @@
       "name": "payslip-pending",
       "base": "payslip",
       "modifier": "pending",
-      "zh": "薪資單待審",
-      "set": "core"
+      "zh": "薪資單待審"
     },
     {
       "name": "payslip-approved",
       "base": "payslip",
       "modifier": "approved",
-      "zh": "薪資單已核准",
-      "set": "core"
+      "zh": "薪資單已核准"
     },
     {
       "name": "invoice-exception",
       "base": "invoice",
       "modifier": "exception",
-      "zh": "請款異常",
-      "set": "core"
+      "zh": "請款異常"
     },
-    { "name": "deduction", "base": "coin", "modifier": "down", "zh": "扣除額", "set": "core" },
-    { "name": "allowance", "base": "coin", "modifier": "up", "zh": "津貼 / 加給", "set": "core" },
+    { "name": "deduction", "base": "coin", "modifier": "down", "zh": "扣除額" },
+    { "name": "allowance", "base": "coin", "modifier": "up", "zh": "津貼 / 加給" },
 
     {
       "name": "levy",
       "base": "shield",
       "modifier": "down",
-      "zh": "法定徵費",
-      "set": "core"
+      "zh": "法定徵費"
     },
     {
       "name": "pay-run-draft",
       "base": "pay-run",
       "modifier": "draft",
-      "zh": "薪資批次草稿",
-      "set": "core"
+      "zh": "薪資批次草稿"
     },
     {
       "name": "assignment-draft",
       "base": "assignment",
       "modifier": "draft",
-      "zh": "指派草稿",
-      "set": "core"
+      "zh": "指派草稿"
     },
     {
       "name": "job-order",
       "base": "assignment",
       "modifier": "pending",
       "zh": "職缺需求單",
-      "set": "core",
       "note": "a job order is a placement not yet filled — composition, not its own base"
     },
     {
       "name": "assignment-approved",
       "base": "assignment",
       "modifier": "approved",
-      "zh": "指派已確認",
-      "set": "core"
+      "zh": "指派已確認"
     },
     {
       "name": "assignment-exception",
       "base": "assignment",
       "modifier": "exception",
-      "zh": "指派異常",
-      "set": "core"
+      "zh": "指派異常"
     },
 
     {
       "name": "pay-run-recurring",
       "base": "pay-run",
       "modifier": "recurring",
-      "zh": "定期薪資批次",
-      "set": "extended"
+      "zh": "定期薪資批次"
     },
-    { "name": "bonus", "base": "coin", "modifier": "plus", "zh": "獎金", "set": "extended" },
+    { "name": "bonus", "base": "coin", "modifier": "plus", "zh": "獎金" },
     {
       "name": "recurring-payment",
       "base": "coin",
       "modifier": "recurring",
-      "zh": "定期給付",
-      "set": "extended"
+      "zh": "定期給付"
     },
     {
       "name": "timesheet-exception",
       "base": "timesheet",
       "modifier": "exception",
-      "zh": "工時異常",
-      "set": "extended"
+      "zh": "工時異常"
     },
-    { "name": "overtime", "base": "clock", "modifier": "plus", "zh": "加班", "set": "extended" },
-    { "name": "shift", "base": "clock", "modifier": "recurring", "zh": "排班", "set": "extended" },
-    { "name": "leave", "base": "calendar", "modifier": "minus", "zh": "請假", "set": "extended" },
+    { "name": "overtime", "base": "clock", "modifier": "plus", "zh": "加班" },
+    { "name": "shift", "base": "clock", "modifier": "recurring", "zh": "排班" },
+    { "name": "leave", "base": "calendar", "modifier": "minus", "zh": "請假" },
     {
       "name": "period-closed",
       "base": "calendar",
       "modifier": "locked",
-      "zh": "期間已關帳",
-      "set": "extended"
+      "zh": "期間已關帳"
     },
     {
       "name": "tax-filed",
       "base": "tax-form",
       "modifier": "approved",
-      "zh": "報稅完成",
-      "set": "extended"
+      "zh": "報稅完成"
     },
     {
       "name": "pension-contribution",
       "base": "shield",
       "modifier": "up",
-      "zh": "退休金提撥",
-      "set": "extended"
+      "zh": "退休金提撥"
     },
     {
       "name": "subscription",
       "base": "invoice",
       "modifier": "recurring",
-      "zh": "訂閱制帳單",
-      "set": "extended"
+      "zh": "訂閱制帳單"
     },
     {
       "name": "credit-note",
       "base": "invoice",
       "modifier": "minus",
-      "zh": "折讓單",
-      "set": "extended"
+      "zh": "折讓單"
     },
     {
       "name": "reimbursement",
       "base": "receipt",
       "modifier": "up",
-      "zh": "費用核銷",
-      "set": "extended"
+      "zh": "費用核銷"
     },
     {
       "name": "contract-signed",
       "base": "contract",
       "modifier": "approved",
-      "zh": "合約已簽署",
-      "set": "extended"
+      "zh": "合約已簽署"
     },
     {
       "name": "ledger-locked",
       "base": "ledger",
       "modifier": "locked",
-      "zh": "總帳鎖定",
-      "set": "extended"
+      "zh": "總帳鎖定"
     },
     {
       "name": "disbursement",
       "base": "bank",
       "modifier": "up",
-      "zh": "撥款 / 匯出",
-      "set": "extended"
+      "zh": "撥款 / 匯出"
     },
     {
       "name": "deposit",
       "base": "bank",
       "modifier": "down",
-      "zh": "入帳 / 收款",
-      "set": "extended"
+      "zh": "入帳 / 收款"
     },
     {
       "name": "onboarding",
       "base": "employee",
       "modifier": "plus",
-      "zh": "到職",
-      "set": "extended"
+      "zh": "到職"
     },
     {
       "name": "offboarding",
       "base": "employee",
       "modifier": "minus",
-      "zh": "離職",
-      "set": "extended"
+      "zh": "離職"
     }
   ]
 }

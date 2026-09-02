@@ -58,7 +58,6 @@ export default function App() {
   const [size, setSize] = useState<number>(24);
   const [stroke, setStroke] = useState<number | "auto">("auto");
   const [animate, setAnimate] = useState(false);
-  const [set, setSet] = useState<"all" | "core" | "extended">("all");
   const [copied, setCopied] = useState<string | null>(null);
   const [replayKey, setReplayKey] = useState(0);
   const [compare, setCompare] = useState(false);
@@ -68,7 +67,6 @@ export default function App() {
     const q = query.trim().toLowerCase();
     const nq = norm(query);
     return registry.filter((i) => {
-      if (set !== "all" && i.set !== set) return false;
       if (!q) return true;
       return (
         i.name.includes(q) ||
@@ -79,7 +77,7 @@ export default function App() {
         conceptTerms(i.name).some((t) => norm(t).includes(nq))
       );
     });
-  }, [query, set]);
+  }, [query]);
 
   const grouped = useMemo(() => {
     const map = new Map<string, IconMeta[]>();
@@ -101,13 +99,11 @@ export default function App() {
     }
   }
 
-  const coreCount = registry.filter((i) => i.set === "core").length;
-
   return (
     <div className="sheet">
       <header className="titleblock">
         <div className="titleblock__main">
-          <h1>Payroll Icon System</h1>
+          <h1>HR Icon System</h1>
           <p>
             Payroll, time, statutory and billing marks built from{" "}
             {new Set(registry.map((i) => i.base).filter(Boolean)).size} bases combined with a fixed
@@ -119,10 +115,6 @@ export default function App() {
           <div className="field">
             <dt>Icons</dt>
             <dd>{registry.length}</dd>
-          </div>
-          <div className="field">
-            <dt>Core set</dt>
-            <dd>{coreCount}</dd>
           </div>
           <div className="field">
             <dt>Grid</dt>
@@ -159,15 +151,6 @@ export default function App() {
           {STROKES.map((s) => (
             <button key={s} type="button" aria-pressed={stroke === s} onClick={() => setStroke(s)}>
               {s}
-            </button>
-          ))}
-        </div>
-
-        <div className="ctrl">
-          <span className="ctrl__label">Set</span>
-          {(["all", "core", "extended"] as const).map((t) => (
-            <button key={t} type="button" aria-pressed={set === t} onClick={() => setSet(t)}>
-              {t}
             </button>
           ))}
         </div>
@@ -272,7 +255,6 @@ export default function App() {
                   )}
                   {conceptLabel && <span className="cell__concepts">{conceptLabel}</span>}
                   {filled && !icon.hasFilled && <span className="cell__nofill">outline only</span>}
-                  {icon.set === "extended" && <span className="cell__tier">ext</span>}
                   {copied === icon.name && <span className="cell__copied">Copied import</span>}
                 </button>
               );
@@ -282,7 +264,7 @@ export default function App() {
       ))}
 
       <footer className="footnote">
-        <span>Payroll Icon System</span>
+        <span>HR Icon System</span>
         <span>Click any icon to copy its import</span>
         <span>24 × 24 · currentColor · pathLength=1</span>
       </footer>
