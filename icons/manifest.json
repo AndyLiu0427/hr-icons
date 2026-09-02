@@ -132,6 +132,15 @@
       "fill": { "container": 0 }
     },
 
+    "compliance": {
+      "zh": "法定合規",
+      "group": "statutory",
+      "composable": false,
+      "set": "core",
+      "fill": { "container": 0 },
+      "note": "the notched rim runs all the way round — the knockout would bite a run of it, not a corner"
+    },
+
     "social-insurance": {
       "zh": "社會保險",
       "group": "statutory",

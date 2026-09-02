@@ -284,6 +284,11 @@
       "zh": "法定提撥",
       "also": ["statutory", "mandatory contribution", "法定"]
     },
+    "compliance": {
+      "icon": "compliance",
+      "zh": "法定合規",
+      "also": ["statutory filing", "regulatory", "obligation", "合規", "法遵"]
+    },
     "pension-contribution": {
       "icon": "pension-contribution",
       "zh": "退休金提撥",

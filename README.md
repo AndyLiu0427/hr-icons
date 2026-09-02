@@ -1,6 +1,6 @@
 # HR Icon System
 
-**64 icons** for payroll, time and attendance, statutory contributions, staffing,
+**65 icons** for payroll, time and attendance, statutory contributions, staffing,
 billing and payments — each in two optical sizes and two weights.
 
 Generic icon sets give you one `file-text` for a payslip, an invoice, a receipt and a
@@ -60,7 +60,7 @@ adds a row of new states across every base.
 
 `npm run confusability` rasterises every icon at 16px — where the set is
 hardest to read — and scores each pair on shared ink. Median similarity across
-1,891 pairs is about 22%.
+1,953 pairs is about 22%.
 
 Read the output carefully. Two marks built from the same base are *supposed* to
 be close: `deduction` and `bonus` are `coin + down` and `coin + plus`, and
@@ -79,7 +79,7 @@ are not remotely confusable to a reader.
 Both were found by drawing the set, and both fail CI rather than living in a style guide.
 
 **Display-only bases cannot be badged.** A wide, short shape like `banknote` loses a run of
-its bottom edge to the knockout instead of a corner, and reads as damaged. Nine bases are
+its bottom edge to the knockout instead of a corner, and reads as damaged. Ten bases are
 marked `composable: false` in [`icons/manifest.json`](icons/manifest.json); composing one is
 a build error.
 
@@ -171,7 +171,7 @@ For selected and tab-bar states. Every mark has one, at both optical sizes:
 Two mechanisms produce it, and which one a mark uses is a property of its shape,
 not a policy:
 
-**Derived** (36 marks). The outer path becomes a solid body and the detail
+**Derived** (37 marks). The outer path becomes a solid body and the detail
 strokes are masked out of it. No new artwork, and the filled form can never
 drift from the outline because it *is* the outline. Declared as
 `fill: { container, skip }` in the manifest. Currency coins derive for free —
@@ -355,8 +355,8 @@ remember to update, and `npm run icons` prints the count on every build.
 
 ```
 icons/
-  bases/*.svg        25 authored 24-unit masters — the source of truth
-  bases-16/*.svg     25 authored 16-unit masters
+  bases/*.svg        26 authored 24-unit masters — the source of truth
+  bases-16/*.svg     26 authored 16-unit masters
   modifiers/*.svg    10 authored 24-unit masters
   modifiers-16/*.svg 10 authored 16-unit masters
   bases-filled/*.svg      14 drawn solid masters, for shapes the fill cannot derive
@@ -463,7 +463,7 @@ here, so anyone can compose the rest in a few minutes.
 
 `set` in the manifest curates rather than gates:
 
-- **core** (36) — the marks nearly every payroll product needs: all 25 bases,
+- **core** (37) — the marks nearly every payroll product needs: all 26 bases,
   plus the states that come up immediately.
 - **extended** (28) — the long tail. Currency coins, and the composed states a
   product reaches for once the basics are in place.

@@ -10,6 +10,25 @@ release — the drawings are still settling. The component API will not.
 
 ## [Unreleased]
 
+### Added
+
+- **`compliance`** — a notched seal with a check. `shield` says protection, and
+  most statutory schemes here are protection: a provident fund, an injury
+  scheme. But a levy is an obligation, not a cover, and a nav item that heads
+  the whole statutory section needs to say "required by law" rather than
+  "protects you".
+
+  Four marks were drawn for it. A gavel is a squiggle at 16px and says
+  courtroom, not payroll. A rulebook collides with `ledger`, which is already a
+  book. A checklist sits too close to `timesheet` and to the `ClipboardList`
+  name products already map onto it. The seal was the only one legible at 16px
+  and unused elsewhere in the set — nothing else is a notched rim.
+
+  Its outer radius is the canonical large circle, and the 16-unit master carries
+  seven notches rather than eight because the small master's stroke is a quarter
+  heavier relative to its grid. It scores below every reported pair, including
+  against `approved`, which is also a check.
+
 ### Changed
 
 - **Renamed to `hr-icons`.** The set was never payroll-only — it covers time and

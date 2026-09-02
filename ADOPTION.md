@@ -82,8 +82,9 @@ SGD, AUD, HKD, TWD, NZD and CAD, because a dollar sign genuinely cannot
 distinguish them. The product is expected to carry the code in text. *Watch for:*
 a screen where the code is not shown and the currency is ambiguous.
 
-**Nine bases cannot take a badge** — `statement`, `banknote`, `exchange`,
-`balance`, `margin`, `team`, `org-chart`, `client`, `social-insurance`. Their shapes lose an edge rather than a corner
+**Ten bases cannot take a badge** — `statement`, `banknote`, `exchange`,
+`balance`, `margin`, `team`, `org-chart`, `client`, `social-insurance`,
+`compliance`. Their shapes lose an edge rather than a corner
 to the knockout. *Watch for:* needing a state on one of them, e.g. "headcount
 approved". The answer is usually to badge something else, but if it keeps
 happening the shape needs redrawing.
@@ -134,7 +135,7 @@ jurisdictions resolves to the same mark — a provident fund is a provident fund
 
 ## 4. What the set probably does not cover
 
-25 bases and 10 modifiers compose into a lot, but the vocabulary was drawn from
+26 bases and 10 modifiers compose into a lot, but the vocabulary was drawn from
 one reading of the domain. Gaps will show up as "there's no icon for…".
 
 The concept table already names them. `approximated` lists every concept that
