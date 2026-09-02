@@ -50,9 +50,9 @@ let nextMaskId = 0;
         >
           @if (m.body; as body) {
             <!-- filled-by-derivation: the solid body, minus its own detail -->
-            <path [attr.d]="body" fill="#fff" stroke="#fff" [attr.stroke-width]="resolvedStroke()" />
+            <path [attr.vector-effect]="vectorEffect()" [attr.d]="body" fill="#fff" stroke="#fff" [attr.stroke-width]="resolvedStroke()" />
             @for (d of m.knockout; track $index) {
-              <path [attr.d]="d" fill="none" stroke="#000" [attr.stroke-width]="resolvedStroke()" />
+              <path [attr.vector-effect]="vectorEffect()" [attr.d]="d" fill="none" stroke="#000" [attr.stroke-width]="resolvedStroke()" />
             }
           } @else {
             <rect x="0" y="0" [attr.width]="canvas()" [attr.height]="canvas()" fill="#fff" stroke="none" />
@@ -72,7 +72,7 @@ let nextMaskId = 0;
       @if (solidPaths(); as solid) {
         <g [attr.mask]="maskRef()">
           @for (d of solid; track $index) {
-            <path [attr.d]="d" fill="currentColor" fill-rule="evenodd" stroke="none" />
+            <path [attr.vector-effect]="vectorEffect()" [attr.d]="d" fill="currentColor" fill-rule="evenodd" stroke="none" />
           }
         </g>
       } @else if (filledBody(); as body) {
@@ -86,17 +86,17 @@ let nextMaskId = 0;
       } @else if (modifierPaths()) {
         <g [attr.mask]="maskRef()">
           @for (d of basePaths(); track $index) {
-            <path [attr.d]="d" pathLength="1" />
+            <path [attr.vector-effect]="vectorEffect()" [attr.d]="d" pathLength="1" />
           }
         </g>
       } @else {
         @for (d of basePaths(); track $index) {
-          <path [attr.d]="d" pathLength="1" />
+          <path [attr.vector-effect]="vectorEffect()" [attr.d]="d" pathLength="1" />
         }
       }
 
       @for (d of modifierPaths(); track $index) {
-        <path [attr.d]="d" pathLength="1" data-modifier="" />
+        <path [attr.vector-effect]="vectorEffect()" [attr.d]="d" pathLength="1" data-modifier="" />
       }
     </svg>
   `,
@@ -184,11 +184,19 @@ export class HrIconComponent {
 
   protected readonly maskRef = computed(() => (this.mask() ? `url(#${this.maskId})` : null));
 
-  protected readonly resolvedStroke = computed(() => {
-    const { grid } = this.resolved();
-    const requested = this.strokeWidth() ?? grid.strokeWidth;
-    return this.absoluteStrokeWidth() ? (requested * grid.canvas) / this.size() : requested;
-  });
+  protected readonly resolvedStroke = computed(
+    () => this.strokeWidth() ?? this.resolved().grid.strokeWidth,
+  );
+
+  /**
+   * A constant on-screen stroke is a renderer feature, not arithmetic: the
+   * browser holds the width in device pixels after the viewBox transform. Mask
+   * paths carry it too, so a filled knockout stays as wide as the stroke it is
+   * cut for. pathLength="1" survives it — dashes run on the normalised length.
+   */
+  protected readonly vectorEffect = computed(() =>
+    this.absoluteStrokeWidth() ? "non-scaling-stroke" : null,
+  );
 }
 
 export type { IconDefinition, IconGeometry, IconMasters, OpticalSize } from "../types.js";

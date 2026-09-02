@@ -73,16 +73,19 @@ export function createIcon(definition: IconDefinition): IconComponent {
 
     // Each master has its own resting weight, so an unset strokeWidth follows
     // the master rather than a single library-wide default.
-    const requested = strokeWidth ?? grid.strokeWidth;
-    const resolvedStroke = absoluteStrokeWidth
-      ? (Number(requested) * grid.canvas) / Number(size)
-      : requested;
+    const resolvedStroke = strokeWidth ?? grid.strokeWidth;
+    // A constant on-screen stroke is a renderer feature, not arithmetic: the
+    // browser holds the width in device pixels after the viewBox transform.
+    // The mask paths carry it too, so a filled knockout stays as wide as the
+    // stroke it is cut for. pathLength="1" survives it — the dash math runs on
+    // the normalised length, not the geometric one.
+    const pathProps = absoluteStrokeWidth ? { vectorEffect: "non-scaling-stroke" } : {};
 
     // An icon is decorative unless the caller gave it an accessible name.
     const named = rest["aria-label"] != null || rest["aria-labelledby"] != null;
 
     const basePaths = geometry.base.map((d, i) =>
-      createElement("path", { key: `b${i}`, d, pathLength: 1 }),
+      createElement("path", { ...pathProps, key: `b${i}`, d, pathLength: 1 }),
     );
 
     const filled = variant === "filled" && (geometry.solid != null || geometry.fill != null);
@@ -138,6 +141,7 @@ export function createIcon(definition: IconDefinition): IconComponent {
           { key: "solid", ...(badge ? { mask: `url(#${maskId})` } : {}) },
           geometry.solid.map((d, i) =>
             createElement("path", {
+              ...pathProps,
               key: `s${i}`,
               d,
               fill: "currentColor",
@@ -147,7 +151,13 @@ export function createIcon(definition: IconDefinition): IconComponent {
           ),
         ),
         ...(badge ?? []).map((d, i) =>
-          createElement("path", { key: `m${i}`, d, pathLength: 1, "data-modifier": "" }),
+          createElement("path", {
+            ...pathProps,
+            key: `m${i}`,
+            d,
+            pathLength: 1,
+            "data-modifier": "",
+          }),
         ),
         children,
       );
@@ -187,6 +197,7 @@ export function createIcon(definition: IconDefinition): IconComponent {
             height: grid.canvas,
           },
           createElement("path", {
+            ...pathProps,
             key: "body",
             d: body,
             fill: "#fff",
@@ -195,6 +206,7 @@ export function createIcon(definition: IconDefinition): IconComponent {
           }),
           ...knockout.map((i) =>
             createElement("path", {
+              ...pathProps,
               key: `k${i}`,
               d: geometry.base[i],
               fill: "none",
@@ -214,6 +226,7 @@ export function createIcon(definition: IconDefinition): IconComponent {
             : null,
         ),
         createElement("path", {
+          ...pathProps,
           key: "solid",
           d: body,
           fill: "currentColor",
@@ -222,7 +235,13 @@ export function createIcon(definition: IconDefinition): IconComponent {
           mask: `url(#${maskId})`,
         }),
         ...(geometry.modifier ?? []).map((d, i) =>
-          createElement("path", { key: `m${i}`, d, pathLength: 1, "data-modifier": "" }),
+          createElement("path", {
+            ...pathProps,
+            key: `m${i}`,
+            d,
+            pathLength: 1,
+            "data-modifier": "",
+          }),
         ),
         children,
       );
@@ -259,7 +278,13 @@ export function createIcon(definition: IconDefinition): IconComponent {
           ),
           createElement("g", { key: "base", mask: `url(#${maskId})` }, basePaths),
           ...geometry.modifier.map((d, i) =>
-            createElement("path", { key: `m${i}`, d, pathLength: 1, "data-modifier": "" }),
+            createElement("path", {
+              ...pathProps,
+              key: `m${i}`,
+              d,
+              pathLength: 1,
+              "data-modifier": "",
+            }),
           ),
         ]
       : basePaths;

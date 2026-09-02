@@ -29,11 +29,22 @@ describe("size and stroke", () => {
     expect(render(<Payslip size={16} strokeWidth={3} />)).toContain('stroke-width="3"');
   });
 
-  it("scales the stroke against the box when absoluteStrokeWidth is set", () => {
-    // 1.5 units on a 24 grid rendered at 48px would double visually; the prop
-    // divides it back out so the rendered weight matches a 24px icon.
+  it("hands a constant on-screen stroke to the renderer when absoluteStrokeWidth is set", () => {
+    // No arithmetic: the width stays as requested and vector-effect tells the
+    // browser to hold it in device pixels after the viewBox scale.
     const html = render(<Payslip size={48} strokeWidth={1.5} absoluteStrokeWidth />);
-    expect(html).toContain('stroke-width="0.75"');
+    expect(html).toContain('stroke-width="1.5"');
+    expect(html).not.toContain('stroke-width="0.75"');
+    expect(html).toContain('vector-effect="non-scaling-stroke"');
+  });
+
+  it("puts the same vector-effect on the mask paths of a filled icon", () => {
+    // The knockout is cut at stroke width; if only the outline held its width
+    // on screen the filled body's holes would drift narrower as size grows.
+    const html = render(<Payslip size={48} absoluteStrokeWidth variant="filled" />);
+    const inMask = html.slice(html.indexOf("<mask"), html.indexOf("</mask>"));
+    expect(inMask).toContain('vector-effect="non-scaling-stroke"');
+    expect(render(<Payslip size={48} variant="filled" />)).not.toContain("vector-effect");
   });
 });
 

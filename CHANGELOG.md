@@ -31,6 +31,13 @@ release — the drawings are still settling. The component API will not.
 
 ### Changed
 
+- **`absoluteStrokeWidth` now uses `vector-effect="non-scaling-stroke"`** in
+  both runtimes instead of dividing the width by the render size in JS. The
+  stroke attribute stays as requested and the browser holds it in device
+  pixels after the viewBox transform. Mask paths carry the effect too, so a
+  filled icon's knockouts stay as wide as the stroke they are cut for. Draw-on
+  animation is unaffected: `pathLength="1"` runs on the normalised length.
+
 - **Renamed to `hr-icons`.** The set was never payroll-only — it covers time and
   attendance, staffing, statutory schemes across three jurisdictions and
   billing. It also no longer publishes under the `@octomate` scope; this is a
@@ -40,6 +47,7 @@ release — the drawings are still settling. The component API will not.
   versions keep working: nothing is unpublished, and the marks are identical.
   The Angular component follows the name — `PayrollIconComponent` is now
   `HrIconComponent` and its selector `pi-icon` is now `hr-icon`.
+
 
 ## [0.3.0] — 2026-08-21
 
