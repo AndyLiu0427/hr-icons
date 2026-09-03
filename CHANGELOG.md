@@ -12,30 +12,26 @@ release — the drawings are still settling. The component API will not.
 
 ### Changed
 
-- **`payslip` shows earnings and deductions.** 0.4.0 shipped a coin on the
-  sheet; a circle in the middle of a document turned out to say very little,
-  and a rounded rectangle with a line through it said less.
+- **`payslip` carries a currency symbol.** This mark went through a figure, a
+  coin, a banknote and a pair of arrows before landing here, and the reason is
+  worth stating: the document family all share one sheet outline, so the content
+  is the only differentiator, and every currency-neutral option was either
+  unreadable on its own or sat on top of `invoice`.
 
-  What a payslip actually is, checked against the statutory minimum in all
-  three jurisdictions this set covers: Singapore's MOM requires twelve items,
-  Hong Kong requires wages and deductions plus MPF contributions, Malaysia's
-  Employment Act s.19 requires gross, itemised deductions and net. They differ
-  in detail and agree on the shape — **money added, money taken away, and what
-  is left**. Nothing else in this set subtracts: an invoice only adds, a
-  receipt records one payment, a statement lists movements.
+  Every other set solves this with a currency symbol — lucide ships
+  `receipt-cent`, `receipt-euro`, `receipt-japanese-yen` and four more; Tabler's
+  `report-money` is a clipboard with a `$`. The mark now does the same, reusing
+  the `$` already drawn for `coin-dollar` rather than a new one.
 
-  So the mark is now a sheet with one row going up and one going down, reusing
-  the vocabulary the set already has — `up` is 加給 / 收入 and `down` is
-  扣除 / 支出, the same arrows that make `allowance` (coin + up) and
-  `deduction` (coin + down). Both arrows sit clear of the badge disc, so
-  `payslip-pending` and `payslip-approved` keep them whole and the knockout
-  only trims the amount lines.
+  **This trades neutrality for legibility, deliberately.** The README's
+  "currency-neutral by default" still holds for `coin`, which ships blank, but
+  `payslip` no longer does: `dollar` covers HKD and SGD, and a Malaysian payslip
+  is in ringgit. If that matters more than being read at a glance, the arrows
+  version is in the history at `6a99fed`.
 
-  Every other set answers this with a currency symbol — lucide ships
-  `receipt-cent`, `receipt-euro`, `receipt-japanese-yen` and four more;
-  Tabler's `report-money` is a clipboard with a `$`. This set is
-  currency-neutral by design, so the arithmetic has to carry the meaning
-  instead of the currency.
+  The `$` is placed to sit entirely clear of the badge disc on both masters, so
+  `payslip-pending` and `payslip-approved` keep the whole glyph and the knockout
+  only trims the line beneath it. Nearest mark at 16px is `statement` at 68%.
 
 ## [0.4.0] — 2026-09-03
 
