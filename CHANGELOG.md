@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 While the major version is 0, the shape of a mark may change in a minor
 release — the drawings are still settling. The component API will not.
 
-## [Unreleased]
+## [0.4.0] — 2026-09-03
 
 ### Added
 
@@ -58,16 +58,6 @@ release — the drawings are still settling. The component API will not.
   pixels after the viewBox transform. Mask paths carry the effect too, so a
   filled icon's knockouts stay as wide as the stroke they are cut for. Draw-on
   animation is unaffected: `pathLength="1"` runs on the normalised length.
-
-- **Renamed to `hr-icons`.** The set was never payroll-only — it covers time and
-  attendance, staffing, statutory schemes across three jurisdictions and
-  billing. It also no longer publishes under the `@octomate` scope; this is a
-  personal project.
-
-  `@octomate/payroll-icons` is deprecated and points here. Its published
-  versions keep working: nothing is unpublished, and the marks are identical.
-  The Angular component follows the name — `PayrollIconComponent` is now
-  `HrIconComponent` and its selector `pi-icon` is now `hr-icon`.
 
 ### Fixed
 
@@ -151,6 +141,18 @@ release — the drawings are still settling. The component API will not.
 
   It found three on its first run, and the `%`-vs-`÷` lesson repeated in
   miniature — the pair count had been 1,830 for a set that now has 1,891.
+
+### Changed
+
+- **Renamed to `hr-icons`.** The set was never payroll-only — it covers time and
+  attendance, staffing, statutory schemes across three jurisdictions and
+  billing. It also no longer publishes under the `@octomate` scope; this is a
+  personal project.
+
+  `@octomate/payroll-icons` is deprecated and points here. Its published
+  versions keep working: nothing is unpublished, and the marks are identical.
+  The Angular component follows the name — `PayrollIconComponent` is now
+  `HrIconComponent` and its selector `pi-icon` is now `hr-icon`.
 
 ## [0.2.0] — 2026-08-17
 
@@ -264,7 +266,6 @@ release — the drawings are still settling. The component API will not.
   the field actually does: curate a starting subset. `npm run icons:free` is
   now `npm run icons:core`.
 - `homepage` now points at the documentation site rather than the README.
-
 
 ## [0.1.0] — 2026-08-09
 
