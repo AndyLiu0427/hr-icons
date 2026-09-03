@@ -31,6 +31,19 @@ release — the drawings are still settling. The component API will not.
 
 ### Changed
 
+- **`payslip` drops the person and carries an amount instead.** The mark was a
+  sheet with a figure on it, which said "someone's document" rather than
+  "someone's pay". It is now a label line and a coin — the set's own money
+  glyph — so every element on the sheet is a payslip element.
+
+  The obvious version, replacing the figure with more ruled lines, was measured
+  and rejected: it lands 81% similar to `invoice` at 16px, against 66% for the
+  old mark, because the figure was the only thing keeping the two apart. The
+  coin restores the distance (68% to `invoice`, 71% to `statement` — the same
+  profile the mark had before) while using different ink from every other sheet
+  in the family. `payslip-pending` and `payslip-approved` still read once the
+  badge knockout takes the coin's lower-right.
+
 - **`banknote` and `team` are taller.** Measured against the rest of the set,
   `banknote` was the clear outlier — 8.50u of ink height where the median 16-unit
   master is 13.75 — so next to any neighbour it read a size small. Its container
