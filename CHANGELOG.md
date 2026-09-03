@@ -12,19 +12,30 @@ release — the drawings are still settling. The component API will not.
 
 ### Changed
 
-- **`payslip` again: the coin is now a banknote.** 0.4.0 replaced the figure
-  with a coin, which put a circle in the middle of the sheet. The mark is now a
-  label line and a small note lying on the sheet — same idea, no circle.
+- **`payslip` shows earnings and deductions.** 0.4.0 shipped a coin on the
+  sheet; a circle in the middle of a document turned out to say very little,
+  and a rounded rectangle with a line through it said less.
 
-  Worth recording why this keeps moving: every major icon set solves "money
-  document" with a currency symbol — lucide ships `receipt-cent`,
-  `receipt-euro`, `receipt-japanese-yen` and four more; Tabler's `report-money`
-  is a clipboard with a `$`. This set covers three jurisdictions and is
-  deliberately currency-neutral, so that answer is closed to it, and the
-  differentiator has to be structural instead. Measured at 16px against every
-  other base, the note is the most distinct payslip yet: worst match 67%
-  (`statement`), against 71% for the coin and 81% for the obvious ruled-lines
-  version, which lands on top of `invoice`.
+  What a payslip actually is, checked against the statutory minimum in all
+  three jurisdictions this set covers: Singapore's MOM requires twelve items,
+  Hong Kong requires wages and deductions plus MPF contributions, Malaysia's
+  Employment Act s.19 requires gross, itemised deductions and net. They differ
+  in detail and agree on the shape — **money added, money taken away, and what
+  is left**. Nothing else in this set subtracts: an invoice only adds, a
+  receipt records one payment, a statement lists movements.
+
+  So the mark is now a sheet with one row going up and one going down, reusing
+  the vocabulary the set already has — `up` is 加給 / 收入 and `down` is
+  扣除 / 支出, the same arrows that make `allowance` (coin + up) and
+  `deduction` (coin + down). Both arrows sit clear of the badge disc, so
+  `payslip-pending` and `payslip-approved` keep them whole and the knockout
+  only trims the amount lines.
+
+  Every other set answers this with a currency symbol — lucide ships
+  `receipt-cent`, `receipt-euro`, `receipt-japanese-yen` and four more;
+  Tabler's `report-money` is a clipboard with a `$`. This set is
+  currency-neutral by design, so the arithmetic has to carry the meaning
+  instead of the currency.
 
 ## [0.4.0] — 2026-09-03
 
