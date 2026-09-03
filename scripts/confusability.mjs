@@ -38,9 +38,7 @@ for (const m of pathsSrc.matchAll(/export const (\w+) = \[([\s\S]*?)\] as const;
 }
 
 const icons = [
-  ...registrySrc.matchAll(
-    /\{ name: "([^"]+)", zh: "[^"]*", group: "([^"]+)",([^}]*)\}/g,
-  ),
+  ...registrySrc.matchAll(/\{ name: "([^"]+)", zh: "[^"]*", group: "([^"]+)",([^}]*)\}/g),
 ].map((m) => ({
   name: m[1],
   group: m[2],

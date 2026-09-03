@@ -369,7 +369,11 @@ await browser.close();
 /* ------------------------------------------------------------------ report */
 writeFileSync(join(OUT, "snapping.json"), JSON.stringify(scored, null, 1));
 const groups = {};
-for (const r of scored) (groups[`${r.variant} @${r.dpr}x`] ??= []).push(r);
+for (const r of scored) {
+  const key = `${r.variant} @${r.dpr}x`;
+  groups[key] ??= [];
+  groups[key].push(r);
+}
 const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
 console.log(
   "\nvariant           n   softRatio   partial-share   (mean over icons; lower = crisper)",
