@@ -8,6 +8,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 While the major version is 0, the shape of a mark may change in a minor
 release — the drawings are still settling. The component API will not.
 
+## [Unreleased]
+
+### Changed
+
+- **`payslip` again: the coin is now a banknote.** 0.4.0 replaced the figure
+  with a coin, which put a circle in the middle of the sheet. The mark is now a
+  label line and a small note lying on the sheet — same idea, no circle.
+
+  Worth recording why this keeps moving: every major icon set solves "money
+  document" with a currency symbol — lucide ships `receipt-cent`,
+  `receipt-euro`, `receipt-japanese-yen` and four more; Tabler's `report-money`
+  is a clipboard with a `$`. This set covers three jurisdictions and is
+  deliberately currency-neutral, so that answer is closed to it, and the
+  differentiator has to be structural instead. Measured at 16px against every
+  other base, the note is the most distinct payslip yet: worst match 67%
+  (`statement`), against 71% for the coin and 81% for the obvious ruled-lines
+  version, which lands on top of `invoice`.
+
 ## [0.4.0] — 2026-09-03
 
 ### Added
