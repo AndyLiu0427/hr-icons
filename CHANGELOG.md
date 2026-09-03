@@ -31,6 +31,14 @@ release — the drawings are still settling. The component API will not.
 
 ### Changed
 
+- **`banknote` and `team` are taller.** Measured against the rest of the set,
+  `banknote` was the clear outlier — 8.50u of ink height where the median 16-unit
+  master is 13.75 — so next to any neighbour it read a size small. Its container
+  goes from 7.2u to 9.8u tall (12u to 15u on the 24 master), with the roundel and
+  the two edge ticks grown to match. `team` was in the short band with `employee`
+  and `balance`; it now measures 13.00/19.50, level with `client`. Both stay
+  inside the live area, clear the 0.4u gap guard, and add no confusable pair.
+
 - **`absoluteStrokeWidth` now uses `vector-effect="non-scaling-stroke"`** in
   both runtimes instead of dividing the width by the render size in JS. The
   stroke attribute stays as requested and the browser holds it in device
@@ -47,6 +55,12 @@ release — the drawings are still settling. The component API will not.
   versions keep working: nothing is unpublished, and the marks are identical.
   The Angular component follows the name — `PayrollIconComponent` is now
   `HrIconComponent` and its selector `pi-icon` is now `hr-icon`.
+
+### Fixed
+
+- **`npm run confusability` parsed zero icons.** Its registry regex still
+  required the `set:` field that the previous change removed, so it silently
+  reported an empty set instead of failing loudly.
 
 ### Removed
 
