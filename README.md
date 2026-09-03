@@ -125,6 +125,38 @@ how many have one. Stroke width follows the master unless you set it explicitly.
 
 The demo site has a **16px compare** toggle that puts both side by side.
 
+### The masters are not snapped to the pixel grid
+
+Atlassian's 2024 icon system aligns stroke edges to whole pixels at 16px. Cursor's
+team deliberately does not, because one mark renders at 12, 14, 16 and 20px and
+snapping can only serve one of them. Both are defensible, so this was measured
+rather than argued — `npm run snapping` renders every 16-unit master at 16 CSS px
+through Chromium at device scale 1 and 2 and scores how much ink lands on
+partially covered pixels.
+
+Measured 2026-09-03, mean over 33 masters (lower is crisper):
+
+| | @1x | @2x |
+| --- | --- | --- |
+| as authored, stroke 1.25 | 0.409 | 0.189 |
+| axis-aligned segments snapped | 0.301 | 0.188 |
+| stroke 1.0, both edges aligned | 0.296 | 0.127 |
+| stroke 1.5, one edge aligned | 0.307 | 0.094 |
+
+Snapping is worth a real 26% at 1x and **nothing at 2x** — 0.001, inside the
+noise. At 2x the lever is not the coordinates at all but the stroke width: 1.25
+CSS px lands on 2.5 device pixels, so both edges straddle, while 1.0 and 1.5 land
+on 2 and 3. Changing it would make the 16 master a fifth heavier, which is a
+drawing decision and not a tuning knob.
+
+The 1x gain is also not free. Snapping moves 166 segments by up to 0.375u, and
+that pushes 10 of the 33 masters under the 0.4-unit minimum gap the build
+enforces — the distance below which two strokes stop reading as two. Buying
+crispness by fusing strokes at the size the icons are smallest is the trade the
+gap guard exists to refuse. Those ten would need redrawing, not nudging.
+
+So: not snapped, and the numbers are reproducible rather than a matter of taste.
+
 ## Currency coins
 
 The generic `coin` deliberately carries no currency symbol, so one set serves every
@@ -368,6 +400,7 @@ icons/
 scripts/build.mjs    validate → optimise → compose → emit
 scripts/gaps.mjs     path sampler behind the minimum-gap guard
 scripts/shapes.mjs   recurring-shape audit (npm run shapes)
+scripts/snapping.mjs pixel-grid measurement (npm run snapping)
 src/
   createIcon.tsx     the runtime (masking, sizing, a11y)
   animate.css        optional motion layer
@@ -442,6 +475,7 @@ only thing that catches a corner landing at 2.0 because that is what the editor 
 | `npm run figma` | Generate, then emit the Figma import bundle |
 | `npm run confusability` | Measure how alike any two marks look at 16px¹ |
 | `npm run shapes` | Audit recurring shapes against the canon |
+| `npm run snapping` | Measure what pixel-snapping the 16-unit masters would buy¹ |
 | `npm run docs` | Check every figure the docs state against the set |
 | `npm run build` | Generate, then compile the package to `dist/` |
 | `npm run dev` | Documentation site with hot reload |
@@ -449,8 +483,8 @@ only thing that catches a corner landing at 2.0 because that is what the editor 
 | `npm run typecheck` | `tsc --noEmit` across src, demo and scripts |
 | `npm run lint` | Biome |
 
-¹ Needs a browser to rasterise and is not part of the build, so playwright is
-not a dependency. Install it when you want to run the check:
+¹ Need a browser to rasterise and are not part of the build, so playwright is
+not a dependency. Install it when you want to run them:
 `npm i -D playwright && npx playwright install chromium`.
 
 

@@ -66,6 +66,7 @@
     "figma": "npm run icons && node scripts/figma-export.mjs",
     "confusability": "node scripts/confusability.mjs",
     "shapes": "node scripts/shapes.mjs",
+    "snapping": "node scripts/snapping.mjs",
     "docs": "node scripts/docs-check.mjs",
     "prebuild": "npm run icons",
     "build": "ngc -p tsconfig.build.json && cp src/animate.css dist/animate.css",
